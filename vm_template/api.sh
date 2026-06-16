@@ -9,7 +9,7 @@ CYAN="\e[36m"
 RESET="\e[0m"
 
 # Configuration
-PROJECT_ID="pavan-457011"
+PROJECT_ID="project-9daeb647-2a9c-4b5f-a21"
 SA="1057655170911-compute@developer.gserviceaccount.com"
 TF_VARFILE1="vm.tfvars"
 

@@ -8,5 +8,5 @@ variable "access_token" {
 }
 
 variable "project_id" {
-  default = "pavan-457011"
+  default = "project-9daeb647-2a9c-4b5f-a21"
 }

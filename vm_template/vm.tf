@@ -2,7 +2,7 @@ module "vm" {
   for_each = {
     for k, v in try(var.vm,{}): k=> v if v.delete != true
   }
-  source                                = "/home/yellaboyinapavanteja/vm/vm_module" 
+  source                                = "/home/yellaboyinapavanteja/gcp_vm_tf/vm_module" 
   name                                  = each.key
   description                           = each.value.description
   zone                                  = each.value.zone

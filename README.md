@@ -4,10 +4,9 @@ Grant roles
  Service Account Token Creator
  Service Account User
 
-
  update SA & Project ID in api.sh and destroy.sh
 
-now run ====   bash api.sh   or ./api.sh
+now run ====   bash api.sh   or ./api.sh  
 
 if you are using bash you need to change provider.tf file 
 update this 

@@ -1,51 +1,48 @@
-name: 'Terraform'
+name: Terraform
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
   pull_request:
 
 permissions:
   contents: read
-  id-token: 'write'
+  id-token: write
 
 jobs:
   terraform:
-    name: 'Terraform'
+    name: Terraform
     runs-on: ubuntu-latest
-
 
     defaults:
       run:
         shell: bash
+        working-directory: vm_template
 
     steps:
-    # Checkout the repository to the GitHub Actions runner
-    - name: Checkout
-      uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    - id: auth
-      uses: google-github-actions/auth@v2.0.0  
-      with:
-        workload_identity_provider: 'projects/826364797512/locations/global/workloadIdentityPools/github-wlif/providers/github'
-        service_account: 'github-wlif@project-9daeb647-2a9c-4b5f-a21.iam.gserviceaccount.com'
+      - name: Authenticate to Google Cloud
+        id: auth
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: projects/826364797512/locations/global/workloadIdentityPools/github-wlif/providers/github
+          service_account: github-wlif@project-9daeb647-2a9c-4b5f-a21.iam.gserviceaccount.com
 
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
 
-          
-    - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v1
-      with:
-        cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+      - name: Terraform Init
+        run: terraform init
 
+      - name: Terraform Validate
+        run: terraform validate
 
-    - name: Terraform Init
-      run: terraform init
+      - name: Terraform Plan
+        run: terraform plan -input=false -var-file="vm.tfvars"
 
-
-    # Generates an execution plan for Terraform
-    - name: Terraform Plan
-      run: terraform plan -input=false
-
-
-    - name: Terraform Apply
-      run: terraform apply -auto-approve -input=false
+      - name: Terraform Apply
+        if: github.ref == 'refs/heads/main'
+        run: terraform apply -auto-approve -input=false -var-file="vm.tfvars"

@@ -4,11 +4,10 @@ variable "vm" {
 }
 
 variable "access_token" {
-  type      = string
-  sensitive = false
+  type = string
 }
 
 variable "project_id" {
-  type = string
-  sensitive = false
+  type    = string
+  default = "project-9daeb647-2a9c-4b5f-a21"
 }

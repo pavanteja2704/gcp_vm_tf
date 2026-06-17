@@ -15,7 +15,6 @@ terraform:
 name: Terraform
 runs-on: ubuntu-latest
 
-```
 defaults:
   run:
     shell: bash
@@ -47,4 +46,3 @@ steps:
   - name: Terraform Apply
     if: github.ref == 'refs/heads/main'
     run: terraform apply -auto-approve -input=false -var-file="vm.tfvars"
-```

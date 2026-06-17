@@ -80,8 +80,8 @@ vm = {
     }
 
     service_account = {
-      email  = "default"
-      scopes = ["https://www.googleapis.com/auth/cloud-platform"]
+      email  = "bash-sa@project-9daeb647-2a9c-4b5f-a21.iam.gserviceaccount.com"
+      scopes = ["cloud-platform"]
     }
 
     shielded_config = {

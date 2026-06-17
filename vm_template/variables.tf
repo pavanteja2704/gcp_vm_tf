@@ -5,9 +5,10 @@ variable "vm" {
 
 variable "access_token" {
   type      = string
-  sensitive = true
+  sensitive = false
 }
 
 variable "project_id" {
   type = string
+  sensitive = false
 }

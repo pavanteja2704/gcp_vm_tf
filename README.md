@@ -1,4 +1,4 @@
-create a SA "bash-sa@project-9daeb647-2a9c-4b5f-a21.iam.gserviceaccount.com"
+create a SA "bash-sa@project-8888.iam.gserviceaccount.com"
 Grant roles 
  Compute Admin
  Service Account Token Creator

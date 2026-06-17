@@ -30,6 +30,9 @@ jobs:
         with:
           workload_identity_provider: projects/826364797512/locations/global/workloadIdentityPools/github-wlif/providers/github
           service_account: github-wlif@project-9daeb647-2a9c-4b5f-a21.iam.gserviceaccount.com
+          create_credentials_file: true
+          export_environment_variables: true
+          token_format: access_token
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
